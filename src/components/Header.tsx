@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useLanguage } from "./LanguageProvider";
 import type { Lang } from "@/content/copy";
+import { site } from "@/content/site";
 
 type Theme = "light" | "dark";
 
-const THEME_EVENT = "nourish:theme";
+const THEME_EVENT = "app:theme";
 
 // The inline script in layout.tsx sets data-theme before paint; this reads it.
 function readTheme(): Theme {
@@ -18,7 +19,7 @@ function subscribeTheme(onChange: () => void) {
   return () => window.removeEventListener(THEME_EVENT, onChange);
 }
 
-function ThemeToggle() {
+export function ThemeToggle() {
   const { t } = useLanguage();
   const theme = useSyncExternalStore(subscribeTheme, readTheme, () => null);
 
@@ -26,7 +27,7 @@ function ThemeToggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     try {
-      localStorage.setItem("nourish-theme", next);
+      localStorage.setItem("app-theme", next);
     } catch {}
     window.dispatchEvent(new Event(THEME_EVENT));
   }
@@ -107,7 +108,7 @@ export function Header() {
     <header className="sticky top-0 z-30 border-b border-line bg-bg/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <a href="#top" className="font-display text-2xl font-semibold tracking-tight text-ink">
-          Nourish
+          {site.name}
         </a>
 
         <nav aria-label="Utama" className="hidden items-center gap-1 md:flex">

@@ -10,8 +10,8 @@ type LanguageContextValue = {
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
-const STORAGE_KEY = "nourish-lang";
-const CHANGE_EVENT = "nourish:lang";
+const STORAGE_KEY = "app-lang";
+const CHANGE_EVENT = "app:lang";
 
 // The visitor's choice lives in localStorage. Storage can be blocked, so the choice is also kept in memory.
 let chosen: Lang | null = null;
@@ -34,13 +34,13 @@ function subscribe(onChange: () => void) {
   };
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export function LanguageProvider({ children, setTitle = true }: { children: React.ReactNode; setTitle?: boolean }) {
   const lang = useSyncExternalStore(subscribe, readLang, () => "id" as Lang);
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = copy[lang].meta.title;
-  }, [lang]);
+    if (setTitle) document.title = copy[lang].meta.title;
+  }, [lang, setTitle]);
 
   const setLang = useCallback((next: Lang) => {
     chosen = next;

@@ -18,6 +18,11 @@
   --accent: #a34a24;
   --accent-soft: #f6e4d9;
   --focus: #a34a24;
+  /* Status colors. Always shown with an icon and a word, never color alone (color-blind safe). */
+  --warn: #8a5a00;
+  --warn-soft: #f6ead0;
+  --danger: #b42318;
+  --danger-soft: #fbe4e1;
   color-scheme: light;
 }
 
@@ -33,6 +38,10 @@
   --accent: #e58a5f;
   --accent-soft: #33221a;
   --focus: #e58a5f;
+  --warn: #e0b04a;
+  --warn-soft: #33290f;
+  --danger: #f97066;
+  --danger-soft: #3a1c1a;
   color-scheme: dark;
 }
 
@@ -47,6 +56,10 @@
   --color-green-soft: var(--green-soft);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
 }

@@ -1,13 +1,17 @@
 // Landing page copy in Bahasa Indonesia and English.
 // [[n]] marks a citation to references.ts. {key} marks a value filled from site.ts.
 
+import { site } from "./site";
+
 export type Lang = "id" | "en";
+
+const B = site.name;
 
 const id = {
   meta: {
-    title: "Nourish: menu harian bergizi untuk ibu hamil, menyusui, dan MPASI",
+    title: `${B}: menu harian bergizi untuk ibu hamil, menyusui, dan MPASI`,
     description:
-      "Nourish menyusun menu harian keluarga sesuai selera, budget, dan target gizi AKG Kemenkes. Setiap saran disertai rujukan yang bisa dicek.",
+      `${B} menyusun menu harian keluarga sesuai selera, budget, dan target gizi AKG Kemenkes. Setiap saran disertai rujukan yang bisa dicek.`,
   },
   nav: {
     features: "Fitur",
@@ -23,7 +27,7 @@ const id = {
   hero: {
     eyebrow: "Untuk ibu hamil, ibu menyusui, dan si kecil usia 6 sampai 24 bulan",
     title: "Ngidam tetap dituruti. Gizinya tetap cukup.",
-    body: "Nourish menyusun menu harian keluargamu: mengikuti selera hari itu, budget belanja, dan target gizi harian dari AKG Kemenkes[[3]]. Setiap saran datang dengan rujukan yang bisa kamu cek sendiri.",
+    body: `${B} menyusun menu harian keluargamu: mengikuti selera hari itu, budget belanja, dan target gizi harian dari AKG Kemenkes[[3]]. Setiap saran datang dengan rujukan yang bisa kamu cek sendiri.`,
     primary: "Amankan harga founding member",
     secondary: "Masuk daftar tunggu gratis",
     note: "Beta dibuka {beta}.",
@@ -42,7 +46,7 @@ const id = {
     title: "Seribu hari yang membentuk sisanya.",
     p1: "Dari awal kehamilan sampai ulang tahun kedua, kira-kira 1000 hari. Di masa ini, gizi ikut menentukan perkembangan otak dan kesehatan anak sampai dewasa, dan kekurangan yang terjadi tidak selalu bisa dikejar belakangan[[1]].",
     p2: "Hampir semua orang tua sudah tahu gizi itu penting. Yang sulit adalah menerjemahkannya jadi menu hari ini, untuk ibu yang sedang mual atau anak yang sedang menolak makan.",
-    p3: "Nourish mulai dari 1000 hari pertama. Pendampingan untuk anak 2 sampai 12 tahun menyusul.",
+    p3: `${B} mulai dari 1000 hari pertama. Pendampingan untuk anak 2 sampai 12 tahun menyusul.`,
   },
   moments: {
     kicker: "Untuk hari yang tidak sesuai rencana",
@@ -52,7 +56,7 @@ const id = {
         when: "Trimester pertama",
         problem: "Semua bau bikin mual.",
         answer:
-          "Ceritakan apa yang sedang tidak bisa masuk. Nourish menyusun ulang menu dari makanan yang masih bisa kamu terima, lalu menghitung ulang sisa hari supaya target tetap terkejar.",
+          `Ceritakan apa yang sedang tidak bisa masuk. ${B} menyusun ulang menu dari makanan yang masih bisa kamu terima, lalu menghitung ulang sisa hari supaya target tetap terkejar.`,
       },
       {
         when: "Jam 7 pagi",
@@ -63,7 +67,7 @@ const id = {
       {
         when: "Akhir pekan",
         problem: "Kulkas tinggal tahu, bayam, dan sisa ayam.",
-        answer: "Ketik isinya. Nourish menyusun menu dari bahan yang ada, sesuai budget minggu ini.",
+        answer: `Ketik isinya. ${B} menyusun menu dari bahan yang ada, sesuai budget minggu ini.`,
       },
       {
         when: "Setiap hari",
@@ -74,9 +78,10 @@ const id = {
     ],
   },
   features: {
-    kicker: "Isi Nourish Plus",
+    kicker: `Isi ${B} Plus`,
     title: "Satu tempat untuk urusan makan keluarga.",
     note: "Fitur berikut sedang dibangun untuk versi beta.",
+    demo: "Coba prototipe aplikasinya",
     lead: {
       title: "Menu harian dengan target gizi",
       body: "Sarapan sampai camilan, disusun dari target AKG 2019 sesuai fase: trimester kehamilan, menyusui, atau usia MPASI[[3]]. Kandungan gizi bahan diambil dari Tabel Komposisi Pangan Indonesia, jadi tempe, daun kelor, dan ikan kembung ikut dihitung[[4]].",
@@ -118,27 +123,27 @@ const id = {
       },
       {
         title: "Rujukan dari sumber yang jelas.",
-        body: "Hanya pedoman WHO, Kemenkes, IDAI, dan jurnal ilmiah yang bisa dibuka. Kalau sumbernya tidak ada, Nourish bilang tidak tahu.",
+        body: `Hanya pedoman WHO, Kemenkes, IDAI, dan jurnal ilmiah yang bisa dibuka. Kalau sumbernya tidak ada, ${B} bilang tidak tahu.`,
       },
       {
         title: "Tahu batas.",
-        body: "Untuk kondisi seperti diabetes gestasional, preeklamsia, alergi yang sudah didiagnosis, atau bayi prematur, Nourish tidak membuat menu personal dan mengarahkan ke dokter.",
+        body: `Untuk kondisi seperti diabetes gestasional, preeklamsia, alergi yang sudah didiagnosis, atau bayi prematur, ${B} tidak membuat menu personal dan mengarahkan ke dokter.`,
       },
       {
         title: "Tanda bahaya langsung diarahkan.",
-        body: "Perdarahan, gerakan janin berkurang, muntah terus-menerus, atau reaksi alergi pada anak: Nourish menyarankan segera ke dokter atau IGD, bukan memberi saran menu.",
+        body: `Perdarahan, gerakan janin berkurang, muntah terus-menerus, atau reaksi alergi pada anak: ${B} menyarankan segera ke dokter atau IGD, bukan memberi saran menu.`,
       },
     ],
     disclaimer:
-      "Nourish membantu urusan dapur sehari-hari. Pemeriksaan kehamilan dan tumbuh kembang tetap di dokter dan bidanmu.",
+      `${B} membantu urusan dapur sehari-hari. Pemeriksaan kehamilan dan tumbuh kembang tetap di dokter dan bidanmu.`,
   },
   pricing: {
     kicker: "Harga",
     title: "Harga founding member untuk {seats} pendaftar pertama.",
-    plan: "Nourish Plus, 12 bulan",
+    plan: `${B} Plus, 12 bulan`,
     normal: "Harga normal setelah rilis {yearly} per tahun",
     perks: [
-      "Semua fitur Nourish Plus selama 12 bulan",
+      `Semua fitur ${B} Plus selama 12 bulan`,
       "Akses beta sebelum rilis umum",
       "Uang kembali penuh kalau beta belum dibuka sampai {refund}",
     ],
@@ -170,7 +175,7 @@ const id = {
     },
     preorder: "Saya tertarik pre-order harga founding member",
     consent:
-      "Saya setuju data ini dipakai untuk menghubungi saya soal Nourish. Data tidak dijual ke pihak lain.",
+      `Saya setuju data ini dipakai untuk menghubungi saya soal ${B}. Data tidak dijual ke pihak lain.`,
     submit: "Daftarkan saya",
     submitting: "Mengirim...",
     successTitle: "Terima kasih, {name}.",
@@ -191,24 +196,24 @@ const id = {
     title: "Yang sering ditanyakan sebelum mendaftar.",
     items: [
       {
-        q: "Apakah Nourish menggantikan dokter kandungan, dokter anak, atau ahli gizi?",
-        a: "Tidak. Nourish membantu menyusun dan mencatat menu harian. Pemeriksaan, diagnosis, dan pengobatan tetap di tenaga kesehatan.",
+        q: `Apakah ${B} menggantikan dokter kandungan, dokter anak, atau ahli gizi?`,
+        a: `Tidak. ${B} membantu menyusun dan mencatat menu harian. Pemeriksaan, diagnosis, dan pengobatan tetap di tenaga kesehatan.`,
       },
       {
-        q: "Saya punya diabetes gestasional, atau anak saya punya alergi. Apakah bisa pakai Nourish?",
-        a: "Kamu tetap bisa memakai daftar belanja dan pencatatan, tapi Nourish tidak membuat menu personal untuk kondisi medis. Menu untuk kondisi ini sebaiknya disusun bersama dokter atau ahli gizi yang menanganimu.",
+        q: `Saya punya diabetes gestasional, atau anak saya punya alergi. Apakah bisa pakai ${B}?`,
+        a: `Kamu tetap bisa memakai daftar belanja dan pencatatan, tapi ${B} tidak membuat menu personal untuk kondisi medis. Menu untuk kondisi ini sebaiknya disusun bersama dokter atau ahli gizi yang menanganimu.`,
       },
       {
         q: "Kenapa harus bayar kalau bisa tanya chatbot gratis?",
-        a: "Chatbot umum bisa menjawab pertanyaan, tapi tidak menyimpan profil keluargamu, tidak menghitung gizi dari tabel pangan Indonesia, dan tidak selalu menunjukkan sumber yang bisa dicek. Nourish menyusun menu harian lengkap, mencatat apa yang benar-benar dimakan, dan menunjukkan rujukannya.",
+        a: `Chatbot umum bisa menjawab pertanyaan, tapi tidak menyimpan profil keluargamu, tidak menghitung gizi dari tabel pangan Indonesia, dan tidak selalu menunjukkan sumber yang bisa dicek. ${B} menyusun menu harian lengkap, mencatat apa yang benar-benar dimakan, dan menunjukkan rujukannya.`,
       },
       {
         q: "Bisa dipakai di iPhone dan Android?",
-        a: "Bisa. Nourish berjalan di browser dan bisa dipasang ke layar utama seperti aplikasi biasa, di iPhone maupun Android.",
+        a: `Bisa. ${B} berjalan di browser dan bisa dipasang ke layar utama seperti aplikasi biasa, di iPhone maupun Android.`,
       },
       {
         q: "Anak saya sudah lebih dari 2 tahun. Apakah ada menunya?",
-        a: "Fokus awal Nourish adalah kehamilan, menyusui, dan MPASI. Menu untuk anak 2 sampai 12 tahun menyusul. Masuk daftar tunggu dulu, kami kabari saat siap.",
+        a: `Fokus awal ${B} adalah kehamilan, menyusui, dan MPASI. Menu untuk anak 2 sampai 12 tahun menyusul. Masuk daftar tunggu dulu, kami kabari saat siap.`,
       },
       {
         q: "Bagaimana kalau beta terlambat?",
@@ -219,8 +224,8 @@ const id = {
   footer: {
     refsTitle: "Rujukan di halaman ini",
     disclaimer:
-      "Nourish adalah alat bantu perencanaan makan dan tidak menggantikan saran medis. Konsultasikan kondisi kesehatan dengan dokter atau tenaga kesehatan.",
-    rights: "© {year} Nourish",
+      `${B} adalah alat bantu perencanaan makan dan tidak menggantikan saran medis. Konsultasikan kondisi kesehatan dengan dokter atau tenaga kesehatan.`,
+    rights: `© {year} ${B}`,
     cite: "Lihat rujukan {n}",
   },
 };
@@ -229,9 +234,9 @@ export type Copy = typeof id;
 
 const en: Copy = {
   meta: {
-    title: "Nourish: daily meal plans for pregnancy, breastfeeding, and first foods",
+    title: `${B}: daily meal plans for pregnancy, breastfeeding, and first foods`,
     description:
-      "Nourish plans your family's daily meals around cravings, budget, and Indonesian dietary reference intakes. Every suggestion comes with a source you can check.",
+      `${B} plans your family's daily meals around cravings, budget, and Indonesian dietary reference intakes. Every suggestion comes with a source you can check.`,
   },
   nav: {
     features: "Features",
@@ -247,7 +252,7 @@ const en: Copy = {
   hero: {
     eyebrow: "For pregnant mothers, breastfeeding mothers, and little ones aged 6 to 24 months",
     title: "Cravings, honored. Nutrition, covered.",
-    body: "Nourish plans your family's meals for the day around what you feel like eating, your grocery budget, and daily nutrition targets from Indonesia's dietary reference intakes (AKG)[[3]]. Every suggestion comes with a source you can check yourself.",
+    body: `${B} plans your family's meals for the day around what you feel like eating, your grocery budget, and daily nutrition targets from Indonesia's dietary reference intakes (AKG)[[3]]. Every suggestion comes with a source you can check yourself.`,
     primary: "Lock in the founding member price",
     secondary: "Join the free waitlist",
     note: "Beta opens {beta}.",
@@ -266,7 +271,7 @@ const en: Copy = {
     title: "A thousand days that shape the rest.",
     p1: "From early pregnancy to a child's second birthday is roughly 1000 days. Nutrition during this window shapes brain development and health into adulthood, and early shortfalls cannot always be made up later[[1]].",
     p2: "Most parents already know nutrition matters. The hard part is turning it into today's menu, for a mother who feels queasy or a toddler who refuses to eat.",
-    p3: "Nourish starts with the first 1000 days. Support for children aged 2 to 12 comes next.",
+    p3: `${B} starts with the first 1000 days. Support for children aged 2 to 12 comes next.`,
   },
   moments: {
     kicker: "For days that don't go to plan",
@@ -276,7 +281,7 @@ const en: Copy = {
         when: "First trimester",
         problem: "Every smell makes you nauseous.",
         answer:
-          "Tell Nourish what you can't stomach right now. It rebuilds the menu from foods you can still manage, then recalculates the rest of the day so you stay on target.",
+          `Tell ${B} what you can't stomach right now. It rebuilds the menu from foods you can still manage, then recalculates the rest of the day so you stay on target.`,
       },
       {
         when: "7 a.m.",
@@ -287,7 +292,7 @@ const en: Copy = {
       {
         when: "Weekend",
         problem: "The fridge has tofu, spinach, and leftover chicken.",
-        answer: "Type what's there. Nourish builds a menu from what you have, within this week's budget.",
+        answer: `Type what's there. ${B} builds a menu from what you have, within this week's budget.`,
       },
       {
         when: "Every day",
@@ -297,9 +302,10 @@ const en: Copy = {
     ],
   },
   features: {
-    kicker: "Inside Nourish Plus",
+    kicker: `Inside ${B} Plus`,
     title: "One place for your family's meals.",
     note: "These features are being built for the beta.",
+    demo: "Try the app prototype (Indonesian)",
     lead: {
       title: "Daily menus with nutrition targets",
       body: "Breakfast to snacks, planned from AKG 2019 targets for your stage: trimester, breastfeeding, or first-foods age[[3]]. Ingredient values come from the Indonesian Food Composition Table, so tempeh, moringa leaves, and mackerel are all counted[[4]].",
@@ -341,27 +347,27 @@ const en: Copy = {
       },
       {
         title: "Sources you can open.",
-        body: "Only guidelines from WHO, the Indonesian Ministry of Health, IDAI, and peer-reviewed journals. When there is no source, Nourish says it doesn't know.",
+        body: `Only guidelines from WHO, the Indonesian Ministry of Health, IDAI, and peer-reviewed journals. When there is no source, ${B} says it doesn't know.`,
       },
       {
         title: "Knows its limits.",
-        body: "For conditions such as gestational diabetes, preeclampsia, diagnosed allergies, or premature babies, Nourish does not create a personal menu and points you to a doctor.",
+        body: `For conditions such as gestational diabetes, preeclampsia, diagnosed allergies, or premature babies, ${B} does not create a personal menu and points you to a doctor.`,
       },
       {
         title: "Warning signs go straight to care.",
-        body: "Bleeding, reduced fetal movement, persistent vomiting, or an allergic reaction in a child: Nourish tells you to see a doctor or go to the ER, not what to eat.",
+        body: `Bleeding, reduced fetal movement, persistent vomiting, or an allergic reaction in a child: ${B} tells you to see a doctor or go to the ER, not what to eat.`,
       },
     ],
     disclaimer:
-      "Nourish helps with everyday kitchen decisions. Prenatal checkups and growth monitoring stay with your doctor and midwife.",
+      `${B} helps with everyday kitchen decisions. Prenatal checkups and growth monitoring stay with your doctor and midwife.`,
   },
   pricing: {
     kicker: "Pricing",
     title: "Founding member price for the first {seats} sign-ups.",
-    plan: "Nourish Plus, 12 months",
+    plan: `${B} Plus, 12 months`,
     normal: "Regular price after launch {yearly} per year",
     perks: [
-      "All Nourish Plus features for 12 months",
+      `All ${B} Plus features for 12 months`,
       "Beta access before public launch",
       "Full refund if the beta has not opened by {refund}",
     ],
@@ -392,7 +398,7 @@ const en: Copy = {
       older: "Child over 2 years",
     },
     preorder: "I'm interested in the founding member pre-order",
-    consent: "I agree that this data may be used to contact me about Nourish. It is never sold.",
+    consent: `I agree that this data may be used to contact me about ${B}. It is never sold.`,
     submit: "Add me to the waitlist",
     submitting: "Sending...",
     successTitle: "Thank you, {name}.",
@@ -413,24 +419,24 @@ const en: Copy = {
     title: "What people ask before signing up.",
     items: [
       {
-        q: "Does Nourish replace my obstetrician, pediatrician, or dietitian?",
-        a: "No. Nourish helps you plan and log daily meals. Checkups, diagnosis, and treatment stay with health professionals.",
+        q: `Does ${B} replace my obstetrician, pediatrician, or dietitian?`,
+        a: `No. ${B} helps you plan and log daily meals. Checkups, diagnosis, and treatment stay with health professionals.`,
       },
       {
-        q: "I have gestational diabetes, or my child has an allergy. Can I use Nourish?",
-        a: "You can still use the shopping list and logging, but Nourish does not create personal menus for medical conditions. Those menus are best planned with the doctor or dietitian treating you.",
+        q: `I have gestational diabetes, or my child has an allergy. Can I use ${B}?`,
+        a: `You can still use the shopping list and logging, but ${B} does not create personal menus for medical conditions. Those menus are best planned with the doctor or dietitian treating you.`,
       },
       {
         q: "Why pay when I can ask a free chatbot?",
-        a: "A general chatbot can answer questions, but it doesn't keep your family's profile, doesn't calculate nutrition from Indonesian food tables, and doesn't always show a source you can check. Nourish plans complete daily menus, logs what was actually eaten, and shows its sources.",
+        a: `A general chatbot can answer questions, but it doesn't keep your family's profile, doesn't calculate nutrition from Indonesian food tables, and doesn't always show a source you can check. ${B} plans complete daily menus, logs what was actually eaten, and shows its sources.`,
       },
       {
         q: "Does it work on iPhone and Android?",
-        a: "Yes. Nourish runs in the browser and can be added to your home screen like a regular app, on iPhone and Android.",
+        a: `Yes. ${B} runs in the browser and can be added to your home screen like a regular app, on iPhone and Android.`,
       },
       {
         q: "My child is over 2. Is there a menu for them?",
-        a: "Nourish starts with pregnancy, breastfeeding, and first foods. Menus for children aged 2 to 12 come next. Join the waitlist and we'll let you know.",
+        a: `${B} starts with pregnancy, breastfeeding, and first foods. Menus for children aged 2 to 12 come next. Join the waitlist and we'll let you know.`,
       },
       {
         q: "What if the beta is late?",
@@ -441,8 +447,8 @@ const en: Copy = {
   footer: {
     refsTitle: "Sources on this page",
     disclaimer:
-      "Nourish is a meal planning tool and does not replace medical advice. Consult a doctor or health professional about any health condition.",
-    rights: "© {year} Nourish",
+      `${B} is a meal planning tool and does not replace medical advice. Consult a doctor or health professional about any health condition.`,
+    rights: `© {year} ${B}`,
     cite: "See source {n}",
   },
 };

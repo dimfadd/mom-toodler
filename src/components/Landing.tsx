@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Header } from "./Header";
 import { useLanguage } from "./LanguageProvider";
 import { Cite, Rich, fill } from "./Rich";
@@ -28,7 +29,7 @@ function ChatPreview() {
       {/* The one elevated element on the page: it stands in for the product itself. */}
       <div className="rounded-2xl border border-line bg-surface p-4 shadow-[0_18px_40px_-24px_rgba(31,42,36,0.45)] sm:p-5">
         <div className="flex items-center justify-between border-b border-line pb-3">
-          <p className="font-display text-lg font-semibold text-ink">Nourish</p>
+          <p className="font-display text-lg font-semibold text-ink">{site.name}</p>
           <p className="text-sm text-muted">{t.chat.who}</p>
         </div>
         <div className="mt-4 flex justify-end">
@@ -144,7 +145,12 @@ function Features() {
             <Kicker>{t.features.kicker}</Kicker>
             <H2>{t.features.title}</H2>
           </div>
-          <p className="text-[15px] text-muted md:max-w-xs md:text-right">{t.features.note}</p>
+          <div className="md:max-w-xs md:text-right">
+            <p className="text-[15px] text-muted">{t.features.note}</p>
+            <Link href="/app" className="mt-1 inline-flex min-h-11 items-center font-semibold text-green underline underline-offset-4">
+              {t.features.demo}
+            </Link>
+          </div>
         </div>
 
         <div className="mt-10 rounded-2xl bg-green-soft p-6 sm:p-10">

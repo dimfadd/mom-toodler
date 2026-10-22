@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 // Sets the theme before first paint so the page never flashes the wrong colors.
-const themeScript = `(function(){try{var t=localStorage.getItem("nourish-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem("app-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

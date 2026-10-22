@@ -1,10 +1,10 @@
-# Nourish: Brief Produk
+# Stunt Free: Brief Produk
 
 Dokumen kerja. Semua angka harga dan target di sini adalah hipotesis yang harus diuji, bukan data.
 
 ## 1. Satu kalimat
 
-Nourish menyusun menu harian untuk ibu hamil, ibu menyusui, dan anak di masa MPASI, mengikuti selera hari itu dan budget keluarga, dengan target gizi dari AKG Kemenkes, dan setiap saran disertai rujukan yang bisa dicek.
+Stunt Free menyusun menu harian untuk ibu hamil, ibu menyusui, dan anak di masa MPASI, mengikuti selera hari itu dan budget keluarga, dengan target gizi dari AKG Kemenkes, dan setiap saran disertai rujukan yang bisa dicek.
 
 ## 2. Keputusan strategis (sudah diambil)
 
@@ -23,7 +23,7 @@ Semua pemain lokal gratis: Teman Bumil (tracker dan komunitas), PrimaKu (IDAI, k
 
 Pembanding berbayar global: The Prenatal Nutritionist USD 19.99/bulan (dengan ahli gizi), Solid Starts USD 99.99/tahun, NutriMom USD 9.99/bulan (AI saja).
 
-Implikasi: Nourish menang lewat narasi, kemudahan, dan kepercayaan (rujukan), bukan lewat fitur AI semata.
+Implikasi: Stunt Free menang lewat narasi, kemudahan, dan kepercayaan (rujukan), bukan lewat fitur AI semata.
 
 ## 4. Produk dan harga (hipotesis)
 
@@ -71,5 +71,5 @@ Nilai di `src/content/site.ts` bisa diubah tanpa menyentuh tampilan.
 - Tanggal rilis beta dan janji uang kembali (tertulis di landing page, wajib dikonfirmasi pemilik)
 - Harga final setelah uji Rp99.000 vs Rp149.000
 - Kebijakan perangkat: batas 2 perangkat vs paket keluarga dengan peran (Owner, Partner, Caregiver)
-- Merek "Nourish": cek ketersediaan di PDKI DJKI dan domain
+- Merek "Stunt Free": cek PDKI DJKI (kelas 9, 42, 44) dan domain. Risiko: nama deskriptif sulit didaftarkan, terdengar seperti janji medis, dan bisa membuat segmen menengah atas merasa produk ini bukan untuk mereka
 - Status hukum layanan gizi digital tanpa tenaga kesehatan: konsultasikan ke konsultan hukum kesehatan

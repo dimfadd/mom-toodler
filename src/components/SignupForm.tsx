@@ -9,7 +9,7 @@ import { STAGES, validateWaitlist, type WaitlistErrors, type WaitlistField, type
 type Status = "idle" | "submitting" | "success" | "error";
 
 /** Fired by the pricing section when there is no payment link yet. */
-export const PREORDER_EVENT = "nourish:preorder";
+export const PREORDER_EVENT = "app:preorder";
 
 const FIELD_ORDER: WaitlistField[] = ["name", "email", "whatsapp", "stage", "consent"];
 
