@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useLanguage } from "./LanguageProvider";
 import type { Lang } from "@/content/copy";
@@ -107,7 +108,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-line bg-bg/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <a href="#top" className="font-display text-2xl font-semibold tracking-tight text-ink">
+        <a href="#top" className="font-display text-xl font-bold tracking-tight whitespace-nowrap text-ink sm:text-2xl">
           {site.name}
         </a>
 
@@ -122,12 +123,12 @@ export function Header() {
         <div className="flex items-center gap-1.5">
           <LanguageSwitch />
           <ThemeToggle />
-          <a
-            href="#daftar"
+          <Link
+            href="/app"
             className="hidden h-11 items-center rounded-lg bg-green px-4 text-[15px] font-semibold text-on-green hover:opacity-90 sm:inline-flex"
           >
             {t.nav.cta}
-          </a>
+          </Link>
           <button
             ref={menuButton}
             type="button"
@@ -147,7 +148,7 @@ export function Header() {
       {open && (
         <nav id="mobile-menu" aria-label="Utama" className="border-t border-line px-4 pb-4 md:hidden">
           <ul className="flex flex-col">
-            {[...links, { href: "#daftar", label: t.nav.cta }].map((link) => (
+            {[...links, { href: "/app", label: t.nav.cta }].map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}

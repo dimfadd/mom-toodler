@@ -43,4 +43,14 @@ export const references: Reference[] = [
       "Wardle J, Cooke LJ, Gibson EL, et al. Increasing children's acceptance of vegetables; a randomized trial of parent-led exposure. Appetite. 2003;40(2):155–162.",
     url: "https://pubmed.ncbi.nlm.nih.gov/12781165/",
   },
+  {
+    id: 7,
+    citation: "World Health Organization. WHO recommendations on antenatal care for a positive pregnancy experience. Geneva: WHO; 2016.",
+    url: "https://www.who.int/publications/i/item/9789241549912",
+  },
+  {
+    id: 8,
+    citation: "PAHO/WHO. Guiding principles for complementary feeding of the breastfed child. Washington DC: PAHO; 2003.",
+    url: "https://dipartimenti.unicatt.it/diana-4._INV_SC_NUTRI_04_Guiding_Principles_for_Complementary_Feeding_of_the_Breastfed_Child.pdf",
+  },
 ];

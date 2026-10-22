@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Header } from "./Header";
 import { useLanguage } from "./LanguageProvider";
 import { Cite, Rich, fill } from "./Rich";
-import { PREORDER_EVENT, SignupForm } from "./SignupForm";
 import { references } from "@/content/references";
 import { rupiah, site } from "@/content/site";
 
@@ -25,7 +24,7 @@ function H2({ children }: { children: React.ReactNode }) {
 function ChatPreview() {
   const { t } = useLanguage();
   return (
-    <figure className="w-full">
+    <figure className="w-full max-w-lg">
       {/* The one elevated element on the page: it stands in for the product itself. */}
       <div className="rounded-2xl border border-line bg-surface p-4 shadow-[0_18px_40px_-24px_rgba(31,42,36,0.45)] sm:p-5">
         <div className="flex items-center justify-between border-b border-line pb-3">
@@ -56,9 +55,9 @@ function ChatPreview() {
 }
 
 function Hero() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   return (
-    <section className={`${container} grid items-center gap-10 pt-10 pb-16 sm:pt-16 md:grid-cols-[1.1fr_0.9fr] md:gap-14 md:pb-24`}>
+    <section className={`${container} grid items-center gap-10 pt-10 pb-16 sm:pt-16 md:pb-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14`}>
       <div>
         <p className="text-[15px] font-semibold text-accent">{t.hero.eyebrow}</p>
         <h1 className="mt-4 font-display text-[2.6rem] leading-[1.02] font-semibold tracking-tight text-balance text-ink sm:text-6xl">
@@ -68,14 +67,14 @@ function Hero() {
           <Rich text={t.hero.body} />
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="#harga" className="inline-flex h-12 items-center justify-center rounded-lg bg-green px-6 text-base font-semibold text-on-green hover:opacity-90">
+          <Link href="/app" className="inline-flex h-12 items-center justify-center rounded-lg bg-green px-6 text-base font-semibold text-on-green hover:opacity-90">
             {t.hero.primary}
-          </a>
-          <a href="#daftar" className="inline-flex h-12 items-center justify-center rounded-lg border border-line px-6 text-base font-semibold text-ink hover:bg-surface">
+          </Link>
+          <a href="#harga" className="inline-flex h-12 items-center justify-center rounded-lg border border-line px-6 text-base font-semibold text-ink hover:bg-surface">
             {t.hero.secondary}
           </a>
         </div>
-        <p className="mt-4 text-sm text-muted">{fill(t.hero.note, { beta: site.betaLabel[lang] })}</p>
+        <p className="mt-4 text-sm text-muted">{t.hero.note}</p>
       </div>
       <ChatPreview />
     </section>
@@ -86,7 +85,7 @@ function Why() {
   const { t } = useLanguage();
   return (
     <section id="kenapa" className="border-y border-line bg-surface">
-      <div className={`${container} grid gap-8 py-16 md:grid-cols-[0.8fr_1.2fr] md:gap-14 md:py-24`}>
+      <div className={`${container} grid gap-8 py-16 md:py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14`}>
         <div>
           <Kicker>{t.why.kicker}</Kicker>
           {/* The 1000-day window is the reason the product exists, so it gets the page's largest type. */}
@@ -95,7 +94,7 @@ function Why() {
           </p>
           <H2>{t.why.title}</H2>
         </div>
-        <div className="space-y-5 text-lg leading-relaxed text-ink md:pt-10">
+        <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-ink lg:pt-10">
           <p><Rich text={t.why.p1} /></p>
           <p className="text-muted">{t.why.p2}</p>
           <p className="border-l-2 border-accent pl-4 text-muted">{t.why.p3}</p>
@@ -179,7 +178,7 @@ function Trust() {
   const { t } = useLanguage();
   return (
     <section id="rujukan" className="border-y border-line bg-surface">
-      <div className={`${container} grid gap-10 py-16 md:grid-cols-[0.9fr_1.1fr] md:gap-14 md:py-24`}>
+      <div className={`${container} grid gap-10 py-16 md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14`}>
         <div>
           <Kicker>{t.trust.kicker}</Kicker>
           <H2>{t.trust.title}</H2>
@@ -206,11 +205,10 @@ function Trust() {
 }
 
 function Pricing() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const vars = {
     seats: site.founding.seats,
     yearly: rupiah(site.plus.yearly),
-    refund: site.refundDeadline[lang],
     founding: rupiah(site.founding.price),
     yearlyPerMonth: rupiah(Math.round(site.plus.yearly / 12 / 1000) * 1000),
   };
@@ -246,13 +244,12 @@ function Pricing() {
               {fill(t.pricing.cta, vars)}
             </a>
           ) : (
-            <a
-              href="#daftar"
-              onClick={() => window.dispatchEvent(new Event(PREORDER_EVENT))}
+            <Link
+              href="/app"
               className="mt-10 inline-flex h-12 w-full items-center justify-center rounded-lg bg-on-green px-6 text-base font-semibold text-green hover:opacity-90 sm:w-auto"
             >
-              {t.pricing.ctaWaitlist}
-            </a>
+              {t.pricing.ctaFree}
+            </Link>
           )}
         </div>
 
@@ -281,24 +278,8 @@ function Pricing() {
   );
 }
 
-function Signup() {
-  const { t } = useLanguage();
-  return (
-    <section id="daftar" className="border-t border-line">
-      <div className={`${container} grid gap-8 py-16 md:grid-cols-[0.8fr_1.2fr] md:gap-14 md:py-24`}>
-        <div>
-          <Kicker>{t.form.kicker}</Kicker>
-          <H2>{t.form.title}</H2>
-          <p className="mt-5 text-lg leading-relaxed text-muted">{t.form.body}</p>
-        </div>
-        <SignupForm />
-      </div>
-    </section>
-  );
-}
-
 function Faq() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   return (
     <section id="faq" className="border-t border-line">
       <div className={`${container} py-16 md:py-24`}>
@@ -312,7 +293,7 @@ function Faq() {
                 <span className="font-display text-2xl leading-none text-accent group-open:hidden" aria-hidden="true">+</span>
                 <span className="hidden font-display text-2xl leading-none text-accent group-open:inline" aria-hidden="true">−</span>
               </summary>
-              <p className="pb-5 leading-relaxed text-muted">{fill(item.a, { refund: site.refundDeadline[lang] })}</p>
+              <p className="pb-5 leading-relaxed text-muted">{item.a}</p>
             </details>
           ))}
         </div>
@@ -323,12 +304,13 @@ function Faq() {
 
 function Footer() {
   const { t } = useLanguage();
+  const citedOnPage = new Set([...JSON.stringify(t).matchAll(/\[\[(\d+)\]\]/g)].map((m) => Number(m[1])).concat([3]));
   return (
     <footer className="border-t border-line bg-surface">
       <div className={`${container} py-12`}>
         <h2 className="font-semibold text-ink">{t.footer.refsTitle}</h2>
         <ol className="mt-4 space-y-3">
-          {references.map((ref) => (
+          {references.filter((ref) => citedOnPage.has(ref.id)).map((ref) => (
             <li key={ref.id} id={`ref-${ref.id}`} className="grid scroll-mt-24 grid-cols-[1.75rem_1fr] gap-2 text-sm leading-relaxed text-muted target:text-ink">
               <span className="font-semibold text-accent tabular-nums">{ref.id}</span>
               <span>
@@ -360,7 +342,6 @@ export function Landing() {
         <Features />
         <Trust />
         <Pricing />
-        <Signup />
         <Faq />
       </main>
       <Footer />

@@ -1,0 +1,236 @@
+{
+ "0to5mo": {
+  "energi": 550.0,
+  "protein": 9.0,
+  "lemak": 31.0,
+  "karbo": 59.0,
+  "serat": 0.0,
+  "kalsium": 200.0,
+  "besi": 0.3
+ },
+ "6to11mo": {
+  "energi": 800.0,
+  "protein": 15.0,
+  "lemak": 35.0,
+  "karbo": 105.0,
+  "serat": 11.0,
+  "kalsium": 270.0,
+  "besi": 11.0
+ },
+ "1to3y": {
+  "energi": 1350.0,
+  "protein": 20.0,
+  "lemak": 45.0,
+  "karbo": 215.0,
+  "serat": 19.0,
+  "kalsium": 650.0,
+  "besi": 7.0
+ },
+ "4to6y": {
+  "energi": 1400.0,
+  "protein": 25.0,
+  "lemak": 50.0,
+  "karbo": 220.0,
+  "serat": 20.0,
+  "kalsium": 1000.0,
+  "besi": 10.0
+ },
+ "7to9y": {
+  "energi": 1650.0,
+  "protein": 40.0,
+  "lemak": 55.0,
+  "karbo": 250.0,
+  "serat": 23.0,
+  "kalsium": 1000.0,
+  "besi": 10.0
+ },
+ "male_10to12y": {
+  "energi": 2000.0,
+  "protein": 50.0,
+  "lemak": 65.0,
+  "karbo": 300.0,
+  "serat": 28.0,
+  "kalsium": 1200.0,
+  "besi": 8.0
+ },
+ "male_13to15y": {
+  "energi": 2400.0,
+  "protein": 70.0,
+  "lemak": 80.0,
+  "karbo": 350.0,
+  "serat": 34.0,
+  "kalsium": 1200.0,
+  "besi": 11.0
+ },
+ "male_16to18y": {
+  "energi": 2650.0,
+  "protein": 75.0,
+  "lemak": 85.0,
+  "karbo": 400.0,
+  "serat": 37.0,
+  "kalsium": 1200.0,
+  "besi": 11.0
+ },
+ "male_19to29y": {
+  "energi": 2650.0,
+  "protein": 65.0,
+  "lemak": 75.0,
+  "karbo": 430.0,
+  "serat": 37.0,
+  "kalsium": 1000.0,
+  "besi": 9.0
+ },
+ "male_30to49y": {
+  "energi": 2550.0,
+  "protein": 65.0,
+  "lemak": 70.0,
+  "karbo": 415.0,
+  "serat": 36.0,
+  "kalsium": 1000.0,
+  "besi": 9.0
+ },
+ "male_50to64y": {
+  "energi": 2150.0,
+  "protein": 65.0,
+  "lemak": 60.0,
+  "karbo": 340.0,
+  "serat": 30.0,
+  "kalsium": 1200.0,
+  "besi": 9.0
+ },
+ "male_65to80y": {
+  "energi": 1800.0,
+  "protein": 64.0,
+  "lemak": 50.0,
+  "karbo": 275.0,
+  "serat": 25.0,
+  "kalsium": 1200.0,
+  "besi": 9.0
+ },
+ "male_80y_plus": {
+  "energi": 1600.0,
+  "protein": 64.0,
+  "lemak": 45.0,
+  "karbo": 235.0,
+  "serat": 22.0,
+  "kalsium": 1200.0,
+  "besi": 9.0
+ },
+ "female_10to12y": {
+  "energi": 1900.0,
+  "protein": 55.0,
+  "lemak": 65.0,
+  "karbo": 280.0,
+  "serat": 27.0,
+  "kalsium": 1200.0,
+  "besi": 8.0
+ },
+ "female_13to15y": {
+  "energi": 2050.0,
+  "protein": 65.0,
+  "lemak": 70.0,
+  "karbo": 300.0,
+  "serat": 29.0,
+  "kalsium": 1200.0,
+  "besi": 15.0
+ },
+ "female_16to18y": {
+  "energi": 2100.0,
+  "protein": 65.0,
+  "lemak": 70.0,
+  "karbo": 300.0,
+  "serat": 29.0,
+  "kalsium": 1200.0,
+  "besi": 15.0
+ },
+ "female_19to29y": {
+  "energi": 2250.0,
+  "protein": 60.0,
+  "lemak": 65.0,
+  "karbo": 360.0,
+  "serat": 32.0,
+  "kalsium": 1000.0,
+  "besi": 18.0
+ },
+ "female_30to49y": {
+  "energi": 2150.0,
+  "protein": 60.0,
+  "lemak": 60.0,
+  "karbo": 340.0,
+  "serat": 30.0,
+  "kalsium": 1000.0,
+  "besi": 18.0
+ },
+ "female_50to64y": {
+  "energi": 1800.0,
+  "protein": 60.0,
+  "lemak": 50.0,
+  "karbo": 280.0,
+  "serat": 25.0,
+  "kalsium": 1200.0,
+  "besi": 8.0
+ },
+ "female_65to80y": {
+  "energi": 1550.0,
+  "protein": 58.0,
+  "lemak": 45.0,
+  "karbo": 230.0,
+  "serat": 22.0,
+  "kalsium": 1200.0,
+  "besi": 8.0
+ },
+ "female_80y_plus": {
+  "energi": 1400.0,
+  "protein": 58.0,
+  "lemak": 40.0,
+  "karbo": 200.0,
+  "serat": 20.0,
+  "kalsium": 1200.0,
+  "besi": 8.0
+ },
+ "add_pregnant_trimst1": {
+  "energi": 180.0,
+  "protein": 1.0,
+  "lemak": 2.3,
+  "karbo": 25.0,
+  "serat": 3.0,
+  "kalsium": 200.0,
+  "besi": 0.0
+ },
+ "add_pregnant_trimst2": {
+  "energi": 300.0,
+  "protein": 10.0,
+  "lemak": 2.3,
+  "karbo": 40.0,
+  "serat": 4.0,
+  "kalsium": 200.0,
+  "besi": 9.0
+ },
+ "add_pregnant_trimst3": {
+  "energi": 300.0,
+  "protein": 30.0,
+  "lemak": 2.3,
+  "karbo": 40.0,
+  "serat": 4.0,
+  "kalsium": 200.0,
+  "besi": 9.0
+ },
+ "add_breastfeeding_0to6m": {
+  "energi": 330.0,
+  "protein": 20.0,
+  "lemak": 2.2,
+  "karbo": 45.0,
+  "serat": 5.0,
+  "kalsium": 200.0,
+  "besi": 0.0
+ },
+ "add_breastfeeding_6to12m": {
+  "energi": 400.0,
+  "protein": 15.0,
+  "lemak": 2.2,
+  "karbo": 55.0,
+  "serat": 6.0,
+  "kalsium": 200.0,
+  "besi": 0.0
+ }
+}

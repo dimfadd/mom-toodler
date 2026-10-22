@@ -1,38 +1,53 @@
 # Mommy Plate
 
-Landing page pre-order dan prototipe aplikasi Mommy Plate: asisten menu harian bergizi untuk ibu hamil, ibu menyusui, dan anak usia MPASI. Strategi produk ada di [`docs/PRODUCT.md`](docs/PRODUCT.md), sistem desain di [`docs/DESIGN.md`](docs/DESIGN.md). Prototipe yang bisa diklik ada di `/app`.
+Aplikasi web (PWA) yang menyusun menu harian bergizi untuk ibu hamil, ibu menyusui, dan anak sampai usia 12 tahun. Strategi produk ada di [`docs/PRODUCT.md`](docs/PRODUCT.md), sistem desain di [`docs/DESIGN.md`](docs/DESIGN.md).
 
-Nama merek diatur di satu tempat: `name` di `src/content/site.ts`.
+- `/` landing page (Bahasa Indonesia dan English, terang dan gelap)
+- `/app` aplikasinya: data keluarga, menu 7 hari, catat makan, chat, progres dan kurva pertumbuhan, daftar belanja
 
-## Isi halaman
+## Cara kerja sistem
 
-- Bahasa Indonesia dan English, mode terang dan gelap
-- Setiap klaim kesehatan diberi nomor rujukan yang menuju daftar sumber di footer (`src/content/references.ts`)
-- Form daftar tunggu dengan validasi, persetujuan data, dan opsi minat pre-order
-- Tombol pre-order founding member (memakai link pembayaran Midtrans/Xendit kalau sudah diisi)
+| Bagian | Sumber | File |
+|---|---|---|
+| Target gizi harian | AKG 2019 (Permenkes 28/2019), termasuk tambahan hamil per trimester dan menyusui | `src/lib/nutrition/data/akg2019.json`, `targets.ts` |
+| Kandungan gizi bahan | TKPI 2017, sebagian USDA. **Status draft, wajib diverifikasi ahli gizi** | `src/lib/nutrition/foods.ts` |
+| Resep | 55 menu keluarga dan MPASI (halus 6 sampai 8 bulan, tim 9 sampai 11 bulan) | `src/lib/nutrition/dishes.ts` |
+| Penyusun menu | Memilih kombinasi menu terbaik per orang per hari, porsi disesuaikan target energi, menghindari alergi dan pantangan, menjaga variasi dan budget | `src/lib/nutrition/planner.ts` |
+| Kurva pertumbuhan | Standar Pertumbuhan Anak WHO 2006 (0 sampai 5 tahun), metode LMS | `src/lib/nutrition/growth.ts` |
+| Tanda bahaya | Daftar kata yang selalu dijawab "segera ke dokter", dicek di HP dan di server | `src/lib/nutrition/safety.ts` |
+| Chat | Claude memilih aksi (ganti menu, catat makan, jawab). Menu dan angka tetap dari penyusun menu. Tanpa API key, chat memakai aturan sederhana di HP | `src/app/api/chat/route.ts`, `src/lib/chat.ts` |
+
+Data keluarga disimpan di browser pengguna (localStorage). Belum ada akun, sinkronisasi antarperangkat, atau pembayaran.
 
 ## Menjalankan
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build && npm start   # versi produksi
+npm run dev          # http://localhost:3000
+npm test             # tes mesin gizi
+npm run build && npm start
 ```
 
 ## Pengaturan
 
-Salin `.env.example` menjadi `.env.local`, lalu isi:
+Salin `.env.example` menjadi `.env.local` (atau isi di Vercel → Settings → Environment Variables):
 
 | Variabel | Fungsi |
 |---|---|
-| `WAITLIST_WEBHOOK_URL` | Tujuan data pendaftar, misalnya Google Apps Script yang menulis ke Google Sheets. Kosong: data disimpan di `.data/waitlist.jsonl` di server |
-| `NEXT_PUBLIC_PREORDER_URL` | Link pembayaran pre-order. Kosong: tombol pre-order membuka form daftar tunggu |
+| `ANTHROPIC_API_KEY` | Mengaktifkan chat AI. Tanpa ini chat tetap jalan dengan mode dasar |
+| `CHAT_MODEL` | Opsional. Bawaan `claude-opus-5-5`; `claude-haiku-5-5` jauh lebih murah |
+| `CHAT_DAILY_LIMIT` | Opsional. Batas pesan per IP per hari (bawaan 60) |
+| `NEXT_PUBLIC_PREORDER_URL` | Opsional. Link pembayaran Midtrans/Xendit untuk penawaran founding member |
 
-Harga, kuota founding member, tanggal beta, dan batas pengembalian dana ada di `src/content/site.ts`. Semua teks ada di `src/content/copy.ts`.
+Nama merek, harga, dan kuota ada di `src/content/site.ts`. Teks landing page ada di `src/content/copy.ts`.
 
-## Wajib dikonfirmasi sebelum halaman dipublikasikan
+## Font Nexa Pro
 
-- Tanggal beta (`betaLabel`) dan janji uang kembali (`refundDeadline`) di `src/content/site.ts`
-- Harga dan kuota founding member
-- Email kontak (`contactEmail`)
-- Hosting: Vercel tidak bisa menyimpan ke file, jadi isi `WAITLIST_WEBHOOK_URL` kalau deploy ke Vercel
+Nexa Pro adalah font berbayar. Taruh file berlisensi di `public/fonts` (lihat `public/fonts/README.md`). Sampai file ada, situs memakai Montserrat.
+
+## Sebelum dijual ke publik
+
+- Ahli gizi memverifikasi `foods.ts` terhadap TKPI resmi, lalu mengubah `verified: false` menjadi `true`
+- Ahli gizi meninjau resep, porsi MPASI, dan aturan tanda bahaya
+- Akun pengguna, sinkronisasi, dan pembayaran langganan
+- Konsultasi hukum soal layanan gizi digital dan UU PDP

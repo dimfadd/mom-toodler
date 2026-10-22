@@ -58,7 +58,11 @@ Nilai di `src/content/site.ts` bisa diubah tanpa menyentuh tampilan.
 - Pengingat jadwal makan lewat WhatsApp (notifikasi PWA di iPhone terbatas)
 - Bahasa Indonesia dan English, tema terang dan gelap
 
-## 7. Rencana kerja
+## 7. Status (22 Oktober 2026)
+
+Aplikasi beta sudah bisa dipakai di `/app` tanpa daftar tunggu: data keluarga, menu 7 hari, catat makan, chat, kurva pertumbuhan WHO, dan daftar belanja. Data tersimpan di browser pengguna. Belum ada akun, sinkronisasi, dan pembayaran. Tabel kandungan gizi bahan masih draft dan wajib diverifikasi ahli gizi sebelum dijual.
+
+## 8. Rencana kerja
 
 | Minggu | Kegiatan | Ukuran berhasil |
 |---|---|---|
@@ -66,9 +70,8 @@ Nilai di `src/content/site.ts` bisa diubah tanpa menyentuh tampilan.
 | 2 sampai 10 | Ahli gizi lepas untuk database dan aturan, bangun MVP | Lolos 300 pertanyaan uji |
 | 10 sampai 12 | Beta untuk founding member, lalu rilis | Retensi bulan pertama |
 
-## 8. Keputusan yang masih terbuka
+## 9. Keputusan yang masih terbuka
 
-- Tanggal rilis beta dan janji uang kembali (tertulis di landing page, wajib dikonfirmasi pemilik)
 - Harga final setelah uji Rp99.000 vs Rp149.000
 - Kebijakan perangkat: batas 2 perangkat vs paket keluarga dengan peran (Owner, Partner, Caregiver)
 - Merek "Mommy Plate": cek PDKI DJKI (kelas 9, 42, 44), domain mommyplate.id/.com, dan akun IG/TikTok. Kata umum bahasa Inggris, jadi pendaftaran merek bisa lebih sulit; ada produk piring bayi "Momma Warm Plate" (Lansinoh) di kategori barang

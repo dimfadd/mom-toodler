@@ -20,10 +20,6 @@ export const site = {
     monthly: 149_000,
     yearly: 1_490_000,
   },
-
-  // Beta date and refund promise. CONFIRM both before publishing the page.
-  betaLabel: { id: "Maret 2027", en: "March 2027" },
-  refundDeadline: { id: "30 April 2027", en: "30 April 2027" },
 } as const;
 
 export function rupiah(value: number): string {

@@ -1,21 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { Montserrat } from "next/font/google";
 import { copy } from "@/content/copy";
 import "./globals.css";
 
-// Fraunces: a warm, slightly old-style serif that feels like a cookbook or a journal, used for headings.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Brand font: Nexa Pro (Fontfabric, commercial). It is used only when licensed files are placed in
+// public/fonts (see public/fonts/README.md). Until then Montserrat, the closest free geometric sans,
+// is used so the page never shows a missing-font request.
+const montserrat = Montserrat({
+  variable: "--font-fallback",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Plus Jakarta Sans: designed for Jakarta's city identity, clear at small sizes, used for body text.
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  display: "swap",
-});
+const NEXA_WEIGHTS: [file: string, weight: number][] = [
+  ["NexaPro-Regular.woff2", 400],
+  ["NexaPro-Bold.woff2", 700],
+  ["NexaPro-Heavy.woff2", 800],
+];
+const nexaFaces = NEXA_WEIGHTS.filter(([file]) => existsSync(path.join(process.cwd(), "public", "fonts", file)))
+  .map(([file, weight]) => `@font-face{font-family:"Nexa Pro";src:url("/fonts/${file}") format("woff2");font-weight:${weight};font-style:normal;font-display:swap}`)
+  .join("");
 
 export const metadata: Metadata = {
   title: copy.id.meta.title,
@@ -38,10 +44,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="id"
       data-theme="light"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${jakarta.variable} antialiased`}
+      className={`${montserrat.variable} antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {nexaFaces && <style dangerouslySetInnerHTML={{ __html: nexaFaces }} />}
       </head>
       <body className="min-h-full">{children}</body>
     </html>

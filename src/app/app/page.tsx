@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
+import { AppRoot } from "@/components/app/AppRoot";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { site } from "@/content/site";
-import { AppPrototype } from "@/prototype/AppPrototype";
 
 export const metadata: Metadata = {
-  title: `Prototipe aplikasi ${site.name}`,
-  description: "Prototipe yang bisa diklik dengan data contoh.",
+  title: `${site.name}: menu keluarga hari ini`,
+  description: "Menu harian bergizi untuk ibu hamil, ibu menyusui, dan anak, dengan target gizi AKG 2019.",
 };
 
-export default function PrototypePage() {
+export default function AppPage() {
   return (
     <LanguageProvider setTitle={false}>
-      <AppPrototype />
+      <AppRoot />
     </LanguageProvider>
   );
 }
