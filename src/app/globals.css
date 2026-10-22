@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/*
+  Palette: warm cream paper + leaf green + one terracotta accent.
+  - Cream and green read as "kitchen and fresh food", not "tech product".
+  - Terracotta is reserved for citations and small labels: it marks "this has a source".
+  All text pairs were checked for WCAG AA in both themes.
+*/
+:root {
+  --bg: #fbf7f0;
+  --surface: #f3ece0;
+  --ink: #1f2a24;
+  --muted: #4f5a53;
+  --line: #e2d8c8;
+  --green: #2e5a43;
+  --on-green: #fbf7f0;
+  --green-soft: #e3ece4;
+  --accent: #a34a24;
+  --accent-soft: #f6e4d9;
+  --focus: #a34a24;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #121a16;
+  --surface: #1b2620;
+  --ink: #f1ebdf;
+  --muted: #b9c2bb;
+  --line: #2c3a32;
+  --green: #8cc5a2;
+  --on-green: #10201a;
+  --green-soft: #1f3128;
+  --accent: #e58a5f;
+  --accent-soft: #33221a;
+  --focus: #e58a5f;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-green: var(--green);
+  --color-on-green: var(--on-green);
+  --color-green-soft: var(--green-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Native <details> marker replaced by our own +/- sign. */
+summary::-webkit-details-marker {
+  display: none;
+}
