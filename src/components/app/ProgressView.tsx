@@ -93,7 +93,7 @@ function Insights({ state, member }: { state: AppState; member: Member }) {
 
 /* ---------- Growth ---------- */
 
-function GrowthChart({ member, state }: { member: Extract<Member, { role: "anak" }>; state: AppState }) {
+export function GrowthChart({ member, state }: { member: Extract<Member, { role: "anak" }>; state: AppState }) {
   const points = (state.measurements[member.id] ?? [])
     .filter((m) => m.weightKg)
     .map((m) => ({ month: ageInMonths(member.birthDate, m.date) + (new Date(m.date).getDate() - new Date(member.birthDate).getDate()) / 30, kg: m.weightKg! }))

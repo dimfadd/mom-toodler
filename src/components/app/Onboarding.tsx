@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { addDays, newId, saveHousehold, today } from "@/lib/store";
-import type { Allergen } from "@/lib/nutrition/foods";
+import { FOODS, type Allergen } from "@/lib/nutrition/foods";
 import { MEDICAL_FLAGS } from "@/lib/nutrition/safety";
 import { pregnancyWeek } from "@/lib/nutrition/targets";
 import type { MedicalFlag, Member, Preferences, Sex } from "@/lib/nutrition/types";
@@ -73,6 +73,7 @@ export function Onboarding({ members, prefs, onDone, onCancel }: { members: Memb
   );
   const [allergens, setAllergens] = useState<string[]>(prefs.allergens);
   const [avoid, setAvoid] = useState<string[]>(prefs.avoid);
+  const [query, setQuery] = useState("");
   const [likesSpicy, setLikesSpicy] = useState(prefs.likesSpicy);
   const [budget, setBudget] = useState(String(prefs.weeklyBudget));
   const [agree, setAgree] = useState(members.length > 0);
@@ -132,6 +133,11 @@ export function Onboarding({ members, prefs, onDone, onCancel }: { members: Memb
     saveHousehold(list, { allergens, avoid, likesSpicy, weeklyBudget: Math.max(0, Number(budget) || 0) });
     onDone();
   }
+
+  const q = query.trim().toLowerCase();
+  const matches = q.length >= 2 ? Object.values(FOODS).filter((f) => !avoid.includes(f.id) && (f.name.toLowerCase().includes(q) || f.id.includes(q))).slice(0, 8) : [];
+  // Foods picked through the search box, shown as chips next to the common ones.
+  const extra = avoid.filter((id) => !DISLIKES.some((d) => d.id === id));
 
   const toggle = (list: string[], id: string) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]);
 
@@ -248,6 +254,7 @@ export function Onboarding({ members, prefs, onDone, onCancel }: { members: Memb
           <fieldset>
             <legend className={label}>Alergi atau pantangan seluruh keluarga</legend>
             <div className="mt-2 flex flex-wrap gap-2">
+              <Chip on={allergens.length === 0} onClick={() => setAllergens([])}>Tidak ada</Chip>
               {ALLERGENS.map((a) => (
                 <Chip key={a.id} on={allergens.includes(a.id)} onClick={() => setAllergens(toggle(allergens, a.id))}>{a.label}</Chip>
               ))}
@@ -256,10 +263,31 @@ export function Onboarding({ members, prefs, onDone, onCancel }: { members: Memb
           <fieldset>
             <legend className={label}>Bahan yang tidak disukai</legend>
             <div className="mt-2 flex flex-wrap gap-2">
-              {DISLIKES.map((a) => (
+              <Chip on={avoid.length === 0} onClick={() => setAvoid([])}>Suka semua</Chip>
+              {[...DISLIKES, ...extra.map((id) => ({ id, label: FOODS[id]?.name ?? id }))].map((a) => (
                 <Chip key={a.id} on={avoid.includes(a.id)} onClick={() => setAvoid(toggle(avoid, a.id))}>{a.label}</Chip>
               ))}
             </div>
+            <label htmlFor="other-food" className="mt-4 block text-sm text-ink">Ada bahan lain yang perlu dihindari? Ketik namanya</label>
+            <input id="other-food" className={input} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Contoh: udang, kacang, pepaya" autoComplete="off" />
+            {q.length >= 2 && (
+              matches.length > 0 ? (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {matches.map((f) => (
+                    <button
+                      key={f.id}
+                      type="button"
+                      onClick={() => { setAvoid([...avoid, f.id]); setQuery(""); }}
+                      className="flex min-h-11 items-center gap-1.5 rounded-lg border border-dashed border-green px-3 text-[15px] text-ink hover:bg-green-soft"
+                    >
+                      <span aria-hidden="true" className="font-bold text-green">+</span> {f.name}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-2 text-sm text-muted">&ldquo;{query.trim()}&rdquo; tidak dipakai di resep Mommy Plate, jadi tidak akan muncul di menu.</p>
+              )
+            )}
           </fieldset>
           <label className="flex min-h-11 items-center gap-3 text-[15px] text-ink">
             <input type="checkbox" checked={likesSpicy} onChange={(e) => setLikesSpicy(e.target.checked)} className="h-5 w-5 accent-[var(--green)]" />

@@ -14,6 +14,7 @@ const id = {
       `${B} menyusun menu harian keluarga sesuai selera, budget, dan target gizi AKG Kemenkes. Setiap saran disertai rujukan yang bisa dicek.`,
   },
   nav: {
+    demo: "Demo",
     features: "Fitur",
     trust: "Rujukan",
     pricing: "Harga",
@@ -29,7 +30,7 @@ const id = {
     title: "Ngidam tetap dituruti. Gizinya tetap cukup.",
     body: `${B} menyusun menu harian keluargamu: mengikuti selera hari itu, budget belanja, dan target gizi harian dari AKG Kemenkes[[3]]. Setiap saran datang dengan rujukan yang bisa kamu cek sendiri.`,
     primary: "Mulai susun menu gratis",
-    secondary: "Lihat harga",
+    secondary: "Lihat demo",
     note: "Versi beta: gratis dipakai sekarang, data keluarga tersimpan di HP-mu.",
   },
   chat: {
@@ -40,6 +41,22 @@ const id = {
       "Bisa. Makan siang diganti pepes ikan kembung kemangi, nasi merah, dan tumis kangkung. Sambalnya dipisah supaya pedasnya bisa kamu atur.",
     status: "Menu hari ini sudah disesuaikan dengan target gizimu.",
     source: "Target dari AKG 2019",
+  },
+  demo: {
+    kicker: "Lihat dulu sebelum mencoba",
+    title: "Begini rasanya memakai Mommy Plate sehari.",
+    body: "Contohnya keluarga Rina: hamil 24 minggu, dengan Kakak yang berusia 2 tahun. Menu, porsi, dan angka di layar dihitung langsung oleh mesin gizi yang sama dengan aplikasinya. Silakan ketuk layarnya.",
+    pick: "Pilih layar demo",
+    steps: [
+      { id: "hari-ini", title: "Hari ini", body: "Satu angka untuk satu hari: berapa persen target gizi yang sudah terpenuhi. Ketuk Catat setelah makan dan lihat cincinnya bertambah." },
+      { id: "menu", title: "Menu sekeluarga", body: "Porsi dalam gram untuk tiap orang. Kakak makan menu yang sama dengan ibunya, porsinya disesuaikan usia, jadi cukup masak sekali." },
+      { id: "chat", title: "Chat saat ngidam", body: "Lagi pengen yang pedas? Kirim pesan, menu makan siang diganti dan gizi hari itu dihitung ulang." },
+      { id: "progres", title: "Pertumbuhan anak", body: "Berat dan tinggi Kakak dibandingkan kurva WHO. Kalau mulai menjauh dari rentang normal, aplikasi memberi tahu lebih awal." },
+      { id: "belanja", title: "Daftar belanja", body: "Bahan untuk seminggu dirangkum otomatis dengan perkiraan biaya, lalu bisa dikirim ke WhatsApp." },
+    ],
+    tryCta: "Coba dengan keluarga contoh",
+    startCta: "Mulai dengan keluargaku",
+    note: "Data contoh. Kandungan gizi bahan masih versi beta.",
   },
   why: {
     kicker: "Kenapa sekarang",
@@ -205,6 +222,7 @@ const en: Copy = {
       `${B} plans your family's daily meals around cravings, budget, and Indonesian dietary reference intakes. Every suggestion comes with a source you can check.`,
   },
   nav: {
+    demo: "Demo",
     features: "Features",
     trust: "Sources",
     pricing: "Pricing",
@@ -220,7 +238,7 @@ const en: Copy = {
     title: "Cravings, honored. Nutrition, covered.",
     body: `${B} plans your family's meals for the day around what you feel like eating, your grocery budget, and daily nutrition targets from Indonesia's dietary reference intakes (AKG)[[3]]. Every suggestion comes with a source you can check yourself.`,
     primary: "Plan today's meals free",
-    secondary: "See pricing",
+    secondary: "See the demo",
     note: "Beta: free to use now, and your family's data stays on your phone.",
   },
   chat: {
@@ -231,6 +249,22 @@ const en: Copy = {
       "Sure. Lunch is now steamed mackerel pepes with basil, brown rice, and stir-fried water spinach. The sambal is on the side so you control the heat.",
     status: "Today's menu still meets your nutrition targets.",
     source: "Targets from AKG 2019",
+  },
+  demo: {
+    kicker: "Look before you try",
+    title: "A day with Mommy Plate.",
+    body: "Meet Rina, 24 weeks pregnant, and her 2-year-old. The menus, portions and numbers on screen are calculated live by the same nutrition engine as the app. Go ahead and tap the screen (the app itself is in Indonesian).",
+    pick: "Choose a demo screen",
+    steps: [
+      { id: "hari-ini", title: "Today", body: "One number for the day: how much of the nutrition target is met. Tap log after a meal and watch the ring fill." },
+      { id: "menu", title: "One menu for the family", body: "Portions in grams for each person. The toddler eats the same dish as her mother, sized for her age, so you cook once." },
+      { id: "chat", title: "Chat for cravings", body: "Craving something spicy? Send a message, lunch is swapped and the day's nutrition is recalculated." },
+      { id: "progres", title: "Child growth", body: "Weight and height plotted against the WHO curves. If she starts drifting out of the normal range, the app flags it early." },
+      { id: "belanja", title: "Shopping list", body: "A week of ingredients summed up with an estimated cost, ready to send on WhatsApp." },
+    ],
+    tryCta: "Try it with the example family",
+    startCta: "Start with my family",
+    note: "Example data. Food composition values are still in beta.",
   },
   why: {
     kicker: "Why now",

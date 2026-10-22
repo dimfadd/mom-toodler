@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/Header";
 import { site } from "@/content/site";
 import { DATA_VERIFIED } from "@/lib/nutrition/foods";
 import { targetsFor } from "@/lib/nutrition/targets";
-import { ensurePlans, today, useAppState } from "@/lib/store";
+import { ensurePlans, loadSample, resetAll, today, useAppState } from "@/lib/store";
 import { ChatView } from "./ChatView";
 import { MenuView } from "./MenuView";
 import { Onboarding } from "./Onboarding";
@@ -53,6 +53,17 @@ export function AppRoot() {
     if (memberCount > 0) ensurePlans(today());
   }, [memberCount]);
 
+  // "/app?contoh=1" from the landing page opens the example family, unless this device already has a household.
+  const loaded = state !== null;
+  useEffect(() => {
+    if (!loaded) return;
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has("contoh")) return;
+    if (memberCount === 0) loadSample();
+    url.searchParams.delete("contoh");
+    window.history.replaceState(null, "", url.pathname + url.hash);
+  }, [loaded, memberCount]);
+
   const go = navigate;
 
   if (!state) {
@@ -72,6 +83,16 @@ export function AppRoot() {
             <ThemeToggle />
           </div>
         </header>
+        {state.members.length === 0 && (
+          <div className="mx-auto max-w-2xl px-4 pt-4 sm:px-6">
+            <p className="rounded-lg bg-green-soft px-4 py-3 text-sm text-ink">
+              Mau lihat-lihat dulu?{" "}
+              <button type="button" onClick={() => { loadSample(); go("hari-ini"); }} className="font-semibold text-green underline underline-offset-2">
+                Coba dengan keluarga contoh
+              </button>
+            </p>
+          </div>
+        )}
         <Onboarding
           members={state.members}
           prefs={state.prefs}
@@ -131,6 +152,14 @@ export function AppRoot() {
           </div>
         </header>
 
+        {state.sample && (
+          <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-b border-line bg-green-soft px-4 py-2 text-sm text-ink sm:px-6">
+            <span>Ini keluarga contoh (Rina dan Kakak).</span>
+            <button type="button" onClick={() => { resetAll(); go("hari-ini"); }} className="min-h-9 font-semibold text-green underline underline-offset-2">
+              Mulai dengan keluargaku
+            </button>
+          </div>
+        )}
         {!DATA_VERIFIED && (
           <p className="border-b border-line bg-warn-soft px-4 py-2 text-xs text-ink sm:px-6">
             Versi beta: kandungan gizi bahan makanan sedang diverifikasi ahli gizi. <button type="button" onClick={() => go("pengaturan")} className="font-semibold underline">Selengkapnya</button>

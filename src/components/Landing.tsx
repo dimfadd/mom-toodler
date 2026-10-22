@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AppDemo } from "./AppDemo";
 import { Header } from "./Header";
 import { useLanguage } from "./LanguageProvider";
 import { Cite, Rich, fill } from "./Rich";
@@ -70,7 +71,7 @@ function Hero() {
           <Link href="/app" className="inline-flex h-12 items-center justify-center rounded-lg bg-green px-6 text-base font-semibold text-on-green hover:opacity-90">
             {t.hero.primary}
           </Link>
-          <a href="#harga" className="inline-flex h-12 items-center justify-center rounded-lg border border-line px-6 text-base font-semibold text-ink hover:bg-surface">
+          <a href="#demo" className="inline-flex h-12 items-center justify-center rounded-lg border border-line px-6 text-base font-semibold text-ink hover:bg-surface">
             {t.hero.secondary}
           </a>
         </div>
@@ -137,7 +138,7 @@ function Moments() {
 function Features() {
   const { t } = useLanguage();
   return (
-    <section id="fitur" className="border-t border-line">
+    <section id="fitur">
       <div className={`${container} py-16 md:py-24`}>
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
@@ -339,6 +340,7 @@ export function Landing() {
         <Hero />
         <Why />
         <Moments />
+        <AppDemo />
         <Features />
         <Trust />
         <Pricing />

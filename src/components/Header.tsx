@@ -100,6 +100,7 @@ export function Header() {
   }, [open]);
 
   const links = [
+    { href: "#demo", label: t.nav.demo },
     { href: "#fitur", label: t.nav.features },
     { href: "#rujukan", label: t.nav.trust },
     { href: "#harga", label: t.nav.pricing },

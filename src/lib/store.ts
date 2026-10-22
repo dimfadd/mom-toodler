@@ -7,6 +7,7 @@ import { useSyncExternalStore } from "react";
 import { DISH_BY_ID } from "./nutrition/dishes";
 import { planDay, swapMeal, type Wish } from "./nutrition/planner";
 import { ageInMonths, childStage } from "./nutrition/targets";
+import { sampleHousehold } from "./sample";
 import type { DayPlan, Member, MealLog, Preferences, Slot } from "./nutrition/types";
 
 export type Measurement = { date: string; weightKg?: number; lengthCm?: number };
@@ -22,6 +23,7 @@ export type AppState = {
   measurements: Record<string, Measurement[]>; // memberId -> list
   chat: ChatEntry[];
   acceptedTerms: boolean;
+  sample?: boolean; // true while the household is the built-in example family
 };
 
 const KEY = "mommyplate-v1";
@@ -122,19 +124,17 @@ function plannedCount(s: AppState): number {
   return s.members.length;
 }
 
-/** Make sure plans exist for `days` days starting at `from`. Mothers are planned first so children can share dishes. */
-export function ensurePlans(from: string, days = 7) {
-  const s = read();
-  if (s.members.length === 0) return;
+/** Plans for `days` days starting at `from`, keeping plans that already exist. Mothers are planned first so children can share dishes. Pure, so the landing page demo can use it too. */
+export function fillPlans(s: AppState, from: string, days = 7): { plans: AppState["plans"]; changed: boolean } {
   let changed = false;
   const plans = { ...s.plans };
   const ordered = [...s.members].sort((a, b) => (a.role === "ibu" ? -1 : b.role === "ibu" ? 1 : 0));
+  const mother = ordered.find((m) => m.role === "ibu");
   for (let i = 0; i < days; i++) {
     const date = addDays(from, i);
     const day = { ...(plans[date] ?? {}) };
     for (const member of ordered) {
       if (member.id in day) continue;
-      const mother = ordered.find((m) => m.role === "ibu");
       const shared = new Map<Slot, string>();
       if (member.role === "anak" && mother && day[mother.id] && childStage(ageInMonths(member.birthDate, date)) === "keluarga") {
         day[mother.id]!.meals.forEach((m) => {
@@ -153,6 +153,13 @@ export function ensurePlans(from: string, days = 7) {
     }
     plans[date] = day;
   }
+  return { plans, changed };
+}
+
+export function ensurePlans(from: string, days = 7) {
+  const s = read();
+  if (s.members.length === 0) return;
+  const { plans, changed } = fillPlans(s, from, days);
   if (changed) write({ ...s, plans });
 }
 
@@ -229,9 +236,18 @@ export function saveHousehold(members: Member[], prefs: Preferences) {
     const t = today();
     const plans: AppState["plans"] = {};
     for (const [date, v] of Object.entries(s.plans)) if (date < t) plans[date] = v;
-    return { ...s, members, prefs, plans, acceptedTerms: true };
+    return { ...s, members, prefs, plans, acceptedTerms: true, sample: false };
   });
   ensurePlans(today());
+}
+
+/** Fill the app with the example family so people can look around before entering their own. */
+export function loadSample() {
+  const t = today();
+  const sample = sampleHousehold(t);
+  const base: AppState = { ...EMPTY, members: sample.members, prefs: sample.prefs, measurements: sample.measurements, acceptedTerms: true, sample: true };
+  const { plans } = fillPlans(base, t);
+  write({ ...base, plans, logs: { [t]: sample.logs } });
 }
 
 export function resetAll() {

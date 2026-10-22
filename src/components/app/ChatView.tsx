@@ -123,31 +123,7 @@ export function ChatView({ state }: { state: AppState }) {
         ))}
         {sending && <li className="text-sm text-muted" role="status">Sedang menyusun jawaban...</li>}
       </ol>
-      <div ref={endRef} className="scroll-mb-56" />
-
-      {/* Pinned above the bottom navigation on phones so it stays within thumb reach. */}
-      <div className="sticky bottom-[calc(4rem+env(safe-area-inset-bottom))] -mx-4 space-y-2 border-t border-line bg-bg px-4 pt-3 pb-3 md:bottom-0 md:mx-0 md:px-0">
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:px-0">
-          {QUICK.map((q) => (
-            <button key={q} type="button" onClick={() => send(q)} disabled={sending} className="min-h-11 shrink-0 rounded-lg border border-line px-3 text-sm font-medium text-ink hover:bg-surface disabled:opacity-50">
-              {q}
-            </button>
-          ))}
-        </div>
-        <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="flex gap-2">
-          <label htmlFor="chat-input" className="sr-only">Tulis pesan</label>
-          <input
-            id="chat-input"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            maxLength={600}
-            placeholder="Tulis pesan..."
-            className="h-12 min-w-0 flex-1 rounded-lg border border-line bg-bg px-3 text-base text-ink placeholder:text-muted"
-          />
-          <Button type="submit" disabled={!input.trim() || sending}>Kirim</Button>
-        </form>
-        {offline && <p className="text-xs text-muted">Asisten AI sedang tidak tersambung, jawaban memakai mode dasar di perangkat.</p>}
-      </div>
+      <div ref={endRef} className="scroll-mb-64 md:scroll-mb-48" />
 
       {(used.length > 0 || state.chat.length > 0) && (
         <div className="mt-2 space-y-3 border-t border-line pt-3">
@@ -167,6 +143,36 @@ export function ChatView({ state }: { state: AppState }) {
           <Button variant="quiet" className="text-sm" onClick={clearChat}>Hapus percakapan</Button>
         </div>
       )}
+
+      {/* Room for the composer, which is fixed to the bottom of the screen. */}
+      <div aria-hidden="true" className="h-40" />
+
+      {/* Always at the bottom of the screen (above the bottom navigation on phones), even when the chat is short. */}
+      <div className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-20 border-t border-line bg-bg px-4 pt-3 pb-3 sm:px-6 md:bottom-0 md:left-60">
+        <div className="mx-auto max-w-2xl space-y-2">
+        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
+          {QUICK.map((q) => (
+            <button key={q} type="button" onClick={() => send(q)} disabled={sending} className="min-h-11 shrink-0 rounded-lg border border-line px-3 text-sm font-medium text-ink hover:bg-surface disabled:opacity-50">
+              {q}
+            </button>
+          ))}
+        </div>
+        <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="flex gap-2">
+          <label htmlFor="chat-input" className="sr-only">Tulis pesan</label>
+          <input
+            id="chat-input"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            maxLength={600}
+            placeholder="Tulis pesan..."
+            className="h-12 min-w-0 flex-1 rounded-lg border border-line bg-bg px-3 text-base text-ink placeholder:text-muted"
+          />
+          <Button type="submit" disabled={!input.trim() || sending}>Kirim</Button>
+        </form>
+        {offline && <p className="text-xs text-muted">Asisten AI sedang tidak tersambung, jawaban memakai mode dasar di perangkat.</p>}
+        </div>
+      </div>
+
     </div>
   );
 }

@@ -2,7 +2,8 @@
 
 Aplikasi web (PWA) yang menyusun menu harian bergizi untuk ibu hamil, ibu menyusui, dan anak sampai usia 12 tahun. Strategi produk ada di [`docs/PRODUCT.md`](docs/PRODUCT.md), sistem desain di [`docs/DESIGN.md`](docs/DESIGN.md).
 
-- `/` landing page (Bahasa Indonesia dan English, terang dan gelap)
+- `/` landing page (Bahasa Indonesia dan English, terang dan gelap), dengan demo HP interaktif memakai keluarga contoh
+- `/app?contoh=1` membuka aplikasi dengan keluarga contoh (Rina hamil 24 minggu, Kakak 2 tahun) bila HP belum punya data
 - `/app` aplikasinya: data keluarga, menu 7 hari, catat makan, chat, progres dan kurva pertumbuhan, daftar belanja
 
 ## Cara kerja sistem
