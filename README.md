@@ -1,6 +1,6 @@
-# Stunt Free
+# Mommy Plate
 
-Landing page pre-order dan prototipe aplikasi Stunt Free: asisten menu harian bergizi untuk ibu hamil, ibu menyusui, dan anak usia MPASI. Strategi produk ada di [`docs/PRODUCT.md`](docs/PRODUCT.md), sistem desain di [`docs/DESIGN.md`](docs/DESIGN.md). Prototipe yang bisa diklik ada di `/app`.
+Landing page pre-order dan prototipe aplikasi Mommy Plate: asisten menu harian bergizi untuk ibu hamil, ibu menyusui, dan anak usia MPASI. Strategi produk ada di [`docs/PRODUCT.md`](docs/PRODUCT.md), sistem desain di [`docs/DESIGN.md`](docs/DESIGN.md). Prototipe yang bisa diklik ada di `/app`.
 
 Nama merek diatur di satu tempat: `name` di `src/content/site.ts`.
 

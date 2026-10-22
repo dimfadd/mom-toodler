@@ -2,7 +2,7 @@
 // Everything marked "CONFIRM" is a commitment shown to buyers: the owner must confirm it before launch.
 
 export const site = {
-  name: "Stunt Free",
+  name: "Mommy Plate",
 
   // Contact email shown on the error state of the signup form. Leave empty to hide it.
   contactEmail: "", // CONFIRM: e.g. "halo@namadomain.id"

@@ -1,4 +1,4 @@
-# Sistem Desain Stunt Free
+# Sistem Desain Mommy Plate
 
 Setiap keputusan desain di bawah punya alasan dari cara manusia melihat, membaca, dan membentuk kebiasaan. Label keyakinan: **[Kuat]** untuk temuan riset yang mapan, **[Sedang]** untuk temuan yang konsisten tapi bergantung konteks, **[Lemah]** untuk klaim populer yang bukti ilmiahnya tipis.
 
